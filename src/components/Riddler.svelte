@@ -19,11 +19,11 @@
         NOTHING,
     }
     let outcome: Outcome = Outcome.NOTHING;
-    const tokenAddress = "0xE5ABC6Afb23Fc3Ac4DC9aD2c933F3406566B8462"; //todo add tokenaddress
+    // const tokenAddress = "0xE5ABC6Afb23Fc3Ac4DC9aD2c933F3406566B8462"; //todo add tokenaddress
 
     async function connect() {
         provider = await connectMetamaskWallet();
-        contract = new Contract(tokenAddress, tokenABI, provider.getSigner());
+        contract = new Contract(import.meta.env.VITE_tokenAddress, tokenABI, provider.getSigner());
 
         riddles = await contract.getRiddles();
         riddles = riddles.filter((riddle) => !riddle.isSolved);
